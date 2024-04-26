@@ -23,7 +23,7 @@ function App() {
 
   const fetchDonations = async (donationId) => {
     try {
-      const response = await axios.get(`http://localhost:8080/donations/${donationId}`);
+      const response = await axios.get(`https://api-ad.tharuksha.com/donations/${donationId}`);
       return response.data;
     } catch (error) {
       console.error(`Error getting donation with ID: ${donationId}`, error);
@@ -67,7 +67,7 @@ const handleGetDetails = async () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/donations', form);
+      const response = await axios.post('https://api-ad.tharuksha.com/donations', form);
       setDonations([...donations, response.data]);
       alert('Donation created successfully');
     } catch (error) {
@@ -86,7 +86,7 @@ const handleGetDetails = async () => {
       }
   
       try {
-        await axios.put(`http://localhost:8080/donations/${donationId}`, selectedDonation);
+        await axios.put(`https://api-ad.tharuksha.com/donations/${donationId}`, selectedDonation);
         alert('Donation updated successfully');
       } catch (error) {
         console.error(`Error updating donation with ID: ${donationId}`, error);
@@ -101,7 +101,7 @@ const handleGetDetails = async () => {
   
   const handleDelete = async (donationId) => {
     try {
-      await axios.delete(`http://localhost:8080/donations/${donationId}`);
+      await axios.delete(`https://api-ad.tharuksha.com/donations/${donationId}`);
       setDonations((prev) => prev.filter((d) => d.id !== donationId)); // Remove deleted donation from state
       alert('Donation deleted successfully');
     } catch (error) {
